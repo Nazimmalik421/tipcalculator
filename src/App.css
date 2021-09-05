@@ -1,38 +1,192 @@
-.App {
-  text-align: center;
+*{
+  box-sizing: border-box;
+}
+.container{
+display: flex;
+align-items: center;
+justify-content: center;
+flex-direction: column;
+margin: 100px auto;
+}
+.logo{
+  margin-bottom: 50px;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.app__container{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  min-width: 50vw;
+  height: auto;
+  background-color: hsl(0, 0%, 100%);
+  box-shadow: 0 0 20px rgba(94, 122, 125, .4);
+  border-radius: 20px;
+  padding: 30px;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.ui__container{
   display: flex;
   flex-direction: column;
+  margin: 10px 20px;
+}
+
+.bill__container{
+  display: flex;
+  flex-direction: column;
+}
+
+.input__bill{
+  text-align: right;
+  font-weight: 700;
+  border: 2px solid transparent;
+  background-color: #f4fafa;
+  height: 50px;
+  border-radius: 5px;
+  padding: 5px 10px;
+  font-size: 20px;
+  font-family: inherit;
+  color: hsl(183, 100%, 15%);
+  margin: 5px 0;
+  width: 100%;
+}
+
+.bill__amount{
+  margin-bottom: 20px;
+}
+
+.input__bill:focus{
+  outline: none;
+  border: 2px solid hsl(172, 67%, 45%);
+}
+
+.tip__Container{
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.tip__btn-upper{
+  display: flex;
+}
+
+.tip__btn-lower{
+  display: flex;
+}
+
+.btn{
+  color: hsl(189, 41%, 97%);
+  font-size: 25px;
+  font-family: inherit;
+  font-weight: 700;
+  width: 120px;
+  height: 50px;
+  background-color: hsl(183, 100%, 15%);
+  border: none;
+  border-radius: 5px;
+  margin: 5px;
+  cursor: pointer;
+}
+
+.btn:hover{
+  background-color: hsl(172, 67%, 45%);
+  color: #00494d;
+}
+
+.tip__manual{
+  margin: 5px;
+  font-size: 16px;
+  font-weight: 700;
+  text-align: right;
+  font-weight: 700;
+  border: 2px solid transparent;
+  background-color: #f4fafa;
+  height: 50px;
+  border-radius: 5px;
+  padding: 5px 10px;
+  font-size: 20px;
+  font-family: inherit;
+  color: hsl(183, 100%, 15%);
+  width: 120px;
+}
+
+.tip__manual:focus{
+  outline: none;
+  border: 2px solid hsl(172, 67%, 45%);
+}
+
+.people__container{
+  margin-top: 15px;
+}
+
+.people-heading__container{
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 5px;
+  height: 35px;
+}
+
+p, label {
+  font-weight: 700;
+  color: hsl(186, 14%, 43%);
+  font-size: 14px;
+}
+.warning{
+  color: rgb(211, 104, 78);
+}
+
+.total__container{
+  background-color: #00494d;
+  min-width:45%;
+  border-radius: 15px;
+  padding: 30px;
+}
+
+.fixer{
+  display: flex;
+  justify-content: space-between;
   align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  height: 60px;
+  margin-top: 10px;
 }
 
-.App-link {
-  color: #61dafb;
+.total-tip__container{
+  display: flex;
+  flex-direction: column;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.tip__amount{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.tip{
+  color: hsl(189, 41%, 97%);
+  margin: 0px;
+
+}
+
+.tip__person{
+  color: hsl(184, 14%, 56%);
+  margin: 0px;
+}
+
+.tip-amount__total{
+  font-size: 40px;
+  color: hsl(172, 67%, 45%);
+}
+
+.btn__reset{
+  width: 100%;
+  height: 50px;
+  margin-top: 150px;
+  background-color: hsl(172, 67%, 45%);
+  font-weight: 700;
+  font-size: 16px;
+  color: hsl(183, 100%, 15%);
+}
+
+.btn__reset:hover{
+  background-color: hsl(172, 38%, 68%);
+  color: #00494d;
 }
