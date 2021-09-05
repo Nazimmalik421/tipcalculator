@@ -1,1 +1,1 @@
-This app is not completed yet. 
+This was the challenge from Frontend mentor to create a tip calculator.
