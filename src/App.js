@@ -1,5 +1,5 @@
-import { useState } from 'react';
-import logo from './assets/logo.svg'
+import { useEffect, useState } from 'react';
+import logo from './assets/logo.svg';
 import './App.css';
 
 const tip5 = 5;
@@ -9,46 +9,16 @@ const tip25 = 25;
 const tip50 = 50;
 
 const App = () => {
-  const [billAmount, setBillAmount] = useState('')
-  const [tipValue, setTipValue] = useState('')
-  const [totalTip, setTotalTip] = useState(0)
-  const [customTip, setCustomTip] = useState('')
-  const [numbOfPeople, setNumbOfPeople] = useState('')
-  const [isPerson, setIsPerson] = useState(false)
-  const [totalpp, setTotalpp] = useState(0)
+  const [billAmount, setBillAmount] = useState('');
+  const [tipValue, setTipValue] = useState('');
+  const [totalTip, setTotalTip] = useState(0);
+  const [customTip, setCustomTip] = useState('');
+  const [numbOfPeople, setNumbOfPeople] = useState('');
+  const [isPerson, setIsPerson] = useState(false);
+  const [totalpp, setTotalpp] = useState(0);
 
-  // const billAmountSubmitHandler = (e) => {
-  //   e.preventDefault()
-
-  // }
-
-  const billChangeHandler = (e) => {
-    setBillAmount(e.target.value)
-    console.log(e.target.value)
-  }
-
-  const tipValueHandler = (e) => {
-    console.log('I WAS CLICKED')
-    setTipValue(e.target.value)
-
-    showTotalTip()
-  }
-
-  const customTipHandler = (e) => {
-    console.log(e.target.value)
-    setCustomTip(e.target.value)
-    setTotalTip(billAmount * (customTip / 100))
-  }
-
-  const peopleNumHandler = (e) => {
-    setNumbOfPeople(e.target.value)
-    if (!e.target.value === 0 && !e.target.value === '')
-      setIsPerson(true)
-  }
-
-  const showTotalTip = () => {
-
-    if (billAmount && tipValue && numbOfPeople) {
+  useEffect(() => {
+    if (billAmount && numbOfPeople && tipValue) {
       setIsPerson(true);
       setTotalTip(billAmount * (tipValue / 100) / numbOfPeople);
 
@@ -56,20 +26,53 @@ const App = () => {
       const totalBillPPIncTip = totalBillPP * (tipValue / 100);
 
       setTotalpp(totalBillPP + totalBillPPIncTip);
+
+    } else if (billAmount && numbOfPeople && customTip) {
+      setIsPerson(true);
+      setTotalTip(billAmount * (customTip / 100) / numbOfPeople);
+
+      const totalBillPP = (billAmount / numbOfPeople);
+      const totalBillPPIncTip = totalBillPP * (customTip / 100);
+
+      setTotalpp(totalBillPP + totalBillPPIncTip);
+
     } else {
-      return setIsPerson(false)
+      return setIsPerson(false);
     }
-  }
+  }, [tipValue, numbOfPeople, billAmount, customTip]);
+
+
+  const billChangeHandler = (e) => {
+    setBillAmount(e.target.value);
+    console.log(e.target.value);
+  };
+
+  const tipValueHandler = (e) => {
+    console.log('I WAS CLICKED');
+    setTipValue(e.target.value);
+  };
+
+  const customTipHandler = (e) => {
+    console.log(e.target.value);
+    setCustomTip(e.target.value);
+    setTotalTip(billAmount * (customTip / 100));
+  };
+
+  const peopleNumHandler = (e) => {
+    setNumbOfPeople(e.target.value);
+    if (!e.target.value === 0 && !e.target.value === '')
+      setIsPerson(true);
+  };
 
   const valuesResetHandler = () => {
-    setBillAmount('')
-    setTipValue('')
-    setTotalTip(0)
-    setCustomTip('')
-    setNumbOfPeople('')
-    setIsPerson(false)
-    setTotalpp(0)
-  }
+    setBillAmount('');
+    setTipValue('');
+    setTotalTip(0);
+    setCustomTip('');
+    setNumbOfPeople('');
+    setIsPerson(false);
+    setTotalpp(0);
+  };
 
   return (
     <div className="container">
@@ -80,10 +83,8 @@ const App = () => {
         <div className='ui__container'>
 
           <div className='bill__container'>
-            {/* <form onSubmit={billAmountSubmitHandler} > */}
             <label htmlFor="bill">Bill</label>
             <input onChange={billChangeHandler} value={billAmount} placeholder='$' className='input__bill bill__amount' required id='bill' type="number" />
-            {/* </form> */}
           </div>
 
           <div className='people__container'>
@@ -106,9 +107,7 @@ const App = () => {
             <div className='tip__btn-lower'>
               <button onClick={tipValueHandler} value={tip25} className='tip__btn btn'>25%</button>
               <button onClick={tipValueHandler} value={tip50} className='tip__btn btn'>50%</button>
-              {/* <form onSubmit={billAmountSubmitHandler} > */}
               <input onChange={customTipHandler} value={customTip} placeholder='Custom' className='tip__manual' type="number" step='any' />
-              {/* </form> */}
 
             </div>
 
@@ -124,7 +123,7 @@ const App = () => {
             </div>
 
             <div className="tip__amount">
-              <h1 className='tip-amount__total'>{`$ ${totalTip.toFixed(2)}`}</h1>
+              <h1 className='tip-amount__total'>{`$${totalTip.toFixed(2)}`}</h1>
             </div>
 
           </div>
@@ -148,6 +147,6 @@ const App = () => {
 
     </div>
   );
-}
+};
 
 export default App;
